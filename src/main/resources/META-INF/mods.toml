@@ -1,0 +1,41 @@
+
+modLoader="javafml"
+loaderVersion="[36,)"
+license="All rights reserved"
+
+[[mods]]
+modId="caerula"
+version="b0.1"
+displayName="Caerula"
+logoFile="caerula.png"
+credits="- Ricy40"
+authors="Ricy40"
+description='''
+Ricy40 presents Caerula! The deep underwater dimension mod to bring more exploration to your game.
+'''
+
+[[dependencies.caerula]]
+modId="forge"
+mandatory=true
+versionRange="[36,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.caerula]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.16.5,1.17)"
+ordering="NONE"
+side="BOTH"
+
+#[[dependencies.caerula]]
+#    modId="geckolib" #mandatory
+#    # Does this dependency have to exist - if not, ordering below must be specified
+#    mandatory=true #mandatory
+#    # The version range of the dependency
+#    versionRange="[3.0.58:dev,)" #mandatory
+#    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+#    ordering="NONE"
+#    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+#    side="BOTH"
+
