@@ -48,8 +48,8 @@ public class CaerulaLootTableProvider extends LootTableProvider
         @Override
         protected void addTables() {
 
-            this.add(BlockInit.RED_SEAGRASS.get(), BlockLootTables::createShearsOnlyDrop);
-            this.add(BlockInit.TALL_RED_SEAGRASS.get(), createDoublePlantShearsDrop(BlockInit.RED_SEAGRASS.get()));
+            add(BlockInit.RED_SEAGRASS.get(), BlockLootTables::createShearsOnlyDrop);
+            add(BlockInit.TALL_RED_SEAGRASS.get(), createDoublePlantShearsDrop(BlockInit.RED_SEAGRASS.get()));
 
         }
 

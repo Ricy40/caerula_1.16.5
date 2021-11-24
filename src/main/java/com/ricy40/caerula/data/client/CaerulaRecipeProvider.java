@@ -1,7 +1,10 @@
 package com.ricy40.caerula.data.client;
 
 import com.ricy40.caerula.Caerula;
+import com.ricy40.caerula.core.init.BlockInit;
+import com.ricy40.caerula.core.init.ItemInit;
 import net.minecraft.data.*;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 
@@ -13,6 +16,8 @@ public class CaerulaRecipeProvider extends RecipeProvider {
     }
 
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
+
+        CookingRecipeBuilder.smelting(Ingredient.of(BlockInit.RED_SEAGRASS.get()), Items.RED_DYE, 0.1f, 200).unlockedBy("has", has(BlockInit.RED_SEAGRASS.get())).save(consumer);
 
         //ShapelessRecipeBuilder.shapeless(ItemInit.CAERULA.get(), 9)
         //        .requires(BlockInit.EXAMPLE_BLOCK.get())
