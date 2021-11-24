@@ -16,5 +16,6 @@ public class CaerulaBlockStateProvider<T extends ModelBuilder<T>> extends BlockS
     protected void registerStatesAndModels()
     {
         //simpleBlock(BlockInit.EXAMPLEBLOCK.get());
+
     }
 }

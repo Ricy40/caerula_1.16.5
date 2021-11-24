@@ -2,6 +2,9 @@ package com.ricy40.caerula;
 
 import com.ricy40.caerula.core.init.BlockInit;
 import com.ricy40.caerula.core.init.ItemInit;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -32,6 +35,9 @@ public class Caerula {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
+
+        RenderTypeLookup.setRenderLayer(BlockInit.RED_SEAGRASS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockInit.TALL_RED_SEAGRASS.get(), RenderType.cutout());
 
     }
 
