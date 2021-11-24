@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_seagrass",
+  "textures": {
+    "texture": "caerula:block/flora/tall_red_seagrass_bottom"
+  }
+}

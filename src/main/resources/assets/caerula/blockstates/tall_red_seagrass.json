@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "caerula:block/flora/tall_red_seagrass_bottom"
+    },
+    "half=upper": {
+      "model": "caerula:block/flora/tall_red_seagrass_top"
+    }
+  }
+}
