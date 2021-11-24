@@ -1,5 +1,6 @@
 {
     "tooltip.caerula.hold_shift" : "Hold \u00A7eShift \u00A77for More Information",
+	"itemGroup.caerulatab" : "Caerula",
 
-	"itemGroup.caerulatab" : "Caerula"
+    "item.caerula.red_seagrass" : "Red Sea Grass"
 }

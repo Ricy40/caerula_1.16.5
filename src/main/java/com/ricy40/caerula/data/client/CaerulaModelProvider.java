@@ -12,6 +12,7 @@ public class CaerulaModelProvider extends ItemModelProvider
     public CaerulaModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
         super(generator, Caerula.MOD_ID, existingFileHelper);
     }
+
     @Override
     protected void registerModels() {
 

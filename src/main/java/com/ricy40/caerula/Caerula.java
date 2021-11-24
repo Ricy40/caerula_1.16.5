@@ -41,7 +41,6 @@ public class Caerula {
 
     }
 
-
     public static class CaerulaGroup extends ItemGroup {
 
         public CaerulaGroup(String label) {
