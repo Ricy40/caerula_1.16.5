@@ -49,7 +49,8 @@ public class CaerulaLootTableProvider extends LootTableProvider
 
             add(BlockInit.RED_SEAGRASS.get(), BlockLootTables::createShearsOnlyDrop);
             add(BlockInit.TALL_RED_SEAGRASS.get(), createDoublePlantShearsDrop(BlockInit.RED_SEAGRASS.get()));
-
+            dropWhenSilkTouch(BlockInit.BUSH_CORAL.get());
+            dropWhenSilkTouch(BlockInit.DEAD_BUSH_CORAL.get());
         }
 
         private static final ILootCondition.IBuilder HAS_SHEARS = MatchTool.toolMatches(ItemPredicate.Builder.item().of(Items.SHEARS));

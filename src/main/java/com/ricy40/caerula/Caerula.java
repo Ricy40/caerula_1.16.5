@@ -38,6 +38,8 @@ public class Caerula {
 
         RenderTypeLookup.setRenderLayer(BlockInit.RED_SEAGRASS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlockInit.TALL_RED_SEAGRASS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockInit.BUSH_CORAL.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockInit.DEAD_BUSH_CORAL.get(), RenderType.cutout());
 
     }
 

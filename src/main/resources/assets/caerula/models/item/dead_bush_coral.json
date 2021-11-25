@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "caerula:block/flora/dead_bush_coral"
+  }
+}

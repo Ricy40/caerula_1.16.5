@@ -5,5 +5,7 @@
     "item.caerula.red_seagrass" : "Red Sea Grass",
 
     "block.caerula.red_seagrass" : "Red Sea Grass",
-    "block.caerula.tall_red_seagrass" : "Tall Red Sea Grass"
+    "block.caerula.tall_red_seagrass" : "Tall Red Sea Grass",
+    "block.caerula.bush_coral" : "Bush Coral",
+    "block.caerula.dead_bush_coral" : "Dead Bush Coral"
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "caerula:block/cross",
+  "textures": {
+    "cross": "caerula:block/flora/dead_bush_coral"
+  }
+}

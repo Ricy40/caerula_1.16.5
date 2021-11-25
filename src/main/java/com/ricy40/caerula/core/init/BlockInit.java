@@ -5,6 +5,7 @@ import com.ricy40.caerula.content.blocks.flora.RedSeaGrassBlock;
 import com.ricy40.caerula.content.blocks.flora.TallRedSeaGrassBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
@@ -25,12 +26,12 @@ public class BlockInit {
 
     public static final RegistryObject<Block> RED_SEAGRASS = registerBlock("red_seagrass", () -> new RedSeaGrassBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_WATER_PLANT).noCollission().instabreak().sound(SoundType.WET_GRASS)));
     public static final RegistryObject<Block> TALL_RED_SEAGRASS = registerBlock("tall_red_seagrass", () -> new TallRedSeaGrassBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_WATER_PLANT).noCollission().instabreak().sound(SoundType.WET_GRASS)));
-
+    public static final RegistryObject<Block> BUSH_CORAL = registerBlock("bush_coral", () -> new CoralBlock(BlockInit.DEAD_BUSH_CORAL.get(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_PURPLE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.CORAL_BLOCK)));
+    public static final RegistryObject<Block> DEAD_BUSH_CORAL = registerBlock("dead_bush_coral", () -> new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
 
     private static <T extends Block > void registerBlockItem(String name, RegistryObject<T> block) {
         if (name != "tall_red_seagrass") {
-            ItemInit.ITEMS.register(name, () -> new BlockItem(block.get(),
-                    new Item.Properties().tab(Caerula.CAERULA_GROUP)));
+            ItemInit.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(Caerula.CAERULA_GROUP)));
         }
     }
 }
