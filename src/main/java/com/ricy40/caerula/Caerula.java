@@ -2,6 +2,7 @@ package com.ricy40.caerula;
 
 import com.ricy40.caerula.world.biome.BiomeInit;
 import com.ricy40.caerula.block.BlockInit;
+import com.ricy40.caerula.item.ItemInit;
 import com.ricy40.caerula.world.biome.FeaturesInit;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
