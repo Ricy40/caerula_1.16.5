@@ -1,5 +1,5 @@
 {
-  "parent": "caerula:block/cross",
+  "parent": "minecraft:block/cross",
   "textures": {
     "cross": "caerula:block/flora/bush_coral"
   }
