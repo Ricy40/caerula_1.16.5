@@ -1,8 +1,7 @@
 package com.ricy40.caerula.data.client;
 
 import com.ricy40.caerula.Caerula;
-import com.ricy40.caerula.core.init.BlockInit;
-import com.ricy40.caerula.core.init.ItemInit;
+import com.ricy40.caerula.block.BlockInit;
 import net.minecraft.data.*;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;

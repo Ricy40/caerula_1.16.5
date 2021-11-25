@@ -1,6 +1,6 @@
-package com.ricy40.caerula.content.blocks.flora;
+package com.ricy40.caerula.block.flora;
 
-import com.ricy40.caerula.core.init.BlockInit;
+import com.ricy40.caerula.block.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TallSeaGrassBlock;
 import net.minecraft.item.ItemStack;

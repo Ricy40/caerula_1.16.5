@@ -2,10 +2,9 @@ package com.ricy40.caerula.data.client;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import com.ricy40.caerula.core.init.BlockInit;
+import com.ricy40.caerula.block.BlockInit;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.data.loot.BlockLootTables;

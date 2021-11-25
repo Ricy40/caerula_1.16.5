@@ -1,4 +1,4 @@
-package com.ricy40.caerula.core.init;
+package com.ricy40.caerula.item;
 
 import com.ricy40.caerula.Caerula;
 import net.minecraft.item.Item;
