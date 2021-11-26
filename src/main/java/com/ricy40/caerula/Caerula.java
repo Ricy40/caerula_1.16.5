@@ -3,7 +3,6 @@ package com.ricy40.caerula;
 import com.ricy40.caerula.world.biome.BiomeInit;
 import com.ricy40.caerula.block.BlockInit;
 import com.ricy40.caerula.item.ItemInit;
-import com.ricy40.caerula.world.biome.FeaturesInit;
 import com.ricy40.caerula.world.gen.CaerulaBiomeGeneration;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -32,7 +31,6 @@ public class Caerula {
 
         ItemInit.ITEMS.register(bus);
         BlockInit.BLOCKS.register(bus);
-        FeaturesInit.FEATURES.register(bus);
         BiomeInit.BIOMES.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);

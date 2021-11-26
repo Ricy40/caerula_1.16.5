@@ -22,17 +22,10 @@ public class CaerulaBiomeMaker {
 
     private static BiomeGenerationSettings.Builder baseCaerulaGeneration(ConfiguredSurfaceBuilder<SurfaceBuilderConfig> sbc) {
         BiomeGenerationSettings.Builder biomegenerationsettings$builder = (new BiomeGenerationSettings.Builder()).surfaceBuilder(sbc);
-        DefaultBiomeFeatures.addOceanCarvers(biomegenerationsettings$builder);
-        DefaultBiomeFeatures.addDefaultLakes(biomegenerationsettings$builder);
         DefaultBiomeFeatures.addDefaultUndergroundVariety(biomegenerationsettings$builder);
         DefaultBiomeFeatures.addDefaultOres(biomegenerationsettings$builder);
         DefaultBiomeFeatures.addDefaultSoftDisks(biomegenerationsettings$builder);
         DefaultBiomeFeatures.addWaterTrees(biomegenerationsettings$builder);
-        DefaultBiomeFeatures.addDefaultFlowers(biomegenerationsettings$builder);
-        DefaultBiomeFeatures.addDefaultGrass(biomegenerationsettings$builder);
-        DefaultBiomeFeatures.addDefaultMushrooms(biomegenerationsettings$builder);
-        DefaultBiomeFeatures.addDefaultExtraVegetation(biomegenerationsettings$builder);
-        DefaultBiomeFeatures.addDefaultSprings(biomegenerationsettings$builder);
         return biomegenerationsettings$builder;
     }
 
