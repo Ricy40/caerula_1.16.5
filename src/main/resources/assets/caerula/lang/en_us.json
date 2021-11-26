@@ -2,10 +2,10 @@
     "tooltip.caerula.hold_shift" : "Hold \u00A7eShift \u00A77for More Information",
 	"itemGroup.caerulatab" : "Caerula",
 
-    "item.caerula.red_seagrass" : "Red Sea Grass",
+    "item.caerula.red_seagrass" : "Red Seagrass",
 
-    "block.caerula.red_seagrass" : "Red Sea Grass",
-    "block.caerula.tall_red_seagrass" : "Tall Red Sea Grass",
+    "block.caerula.red_seagrass" : "Red Seagrass",
+    "block.caerula.tall_red_seagrass" : "Tall Red Seagrass",
     "block.caerula.bush_coral" : "Bush Coral",
     "block.caerula.dead_bush_coral" : "Dead Bush Coral"
 }
