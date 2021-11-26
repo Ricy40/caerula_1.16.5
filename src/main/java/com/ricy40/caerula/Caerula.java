@@ -4,6 +4,7 @@ import com.ricy40.caerula.world.biome.BiomeInit;
 import com.ricy40.caerula.block.BlockInit;
 import com.ricy40.caerula.item.ItemInit;
 import com.ricy40.caerula.world.biome.FeaturesInit;
+import com.ricy40.caerula.world.gen.CaerulaBiomeGeneration;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemGroup;
@@ -43,6 +44,10 @@ public class Caerula {
         RenderTypeLookup.setRenderLayer(BlockInit.TALL_RED_SEAGRASS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlockInit.BUSH_CORAL.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlockInit.DEAD_BUSH_CORAL.get(), RenderType.cutout());
+
+        event.enqueueWork(() -> {
+            CaerulaBiomeGeneration.generateBiomes();
+        });
 
     }
 

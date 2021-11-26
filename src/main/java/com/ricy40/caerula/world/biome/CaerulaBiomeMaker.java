@@ -53,7 +53,7 @@ public class CaerulaBiomeMaker {
                 .generationSettings(biomeGenSettings.build()).build();
     }
 
-    private static Biome makeRedGrassFieldsBiome(final Supplier<ConfiguredSurfaceBuilder<?>> surfaceBuilder, float depth, float scale) {
+    public static Biome makeRedGrassFieldsBiome(final Supplier<ConfiguredSurfaceBuilder<?>> surfaceBuilder, float depth, float scale) {
         MobSpawnInfo.Builder mobspawninfo$builder = (new MobSpawnInfo.Builder()).addSpawn(EntityClassification.WATER_AMBIENT, new MobSpawnInfo.Spawners(EntityType.PUFFERFISH, 15, 1, 3));
         DefaultBiomeFeatures.warmOceanSpawns(mobspawninfo$builder, 10, 4);
         BiomeGenerationSettings.Builder biomegenerationsettings$builder = baseCaerulaGeneration(ConfiguredSurfaceBuilders.FULL_SAND)
