@@ -12,9 +12,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class FeaturesInit {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Caerula.MOD_ID);
 
-    public static final RegistryObject<RedSeaGrassFeature> RED_SEAGRASS = register("red_seagrass", () -> new RedSeaGrassFeature(ProbabilityConfig.CODEC));
+    //public static final RegistryObject<RedSeaGrassFeature> RED_SEAGRASS = FEATURES.register("red_seagrass", new RedSeaGrassFeature(ProbabilityConfig.CODEC));
 
-    public static void register(final IEventBus modEventBus) {
-        FEATURES.register(modEventBus);
+    public static <F extends Feature<?>> void register(String name, RegistryObject<F> feature) {
+        FEATURES.register(name, feature);
     }
 }

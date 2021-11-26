@@ -57,8 +57,8 @@ public class CaerulaBiomeMaker {
         MobSpawnInfo.Builder mobspawninfo$builder = (new MobSpawnInfo.Builder()).addSpawn(EntityClassification.WATER_AMBIENT, new MobSpawnInfo.Spawners(EntityType.PUFFERFISH, 15, 1, 3));
         DefaultBiomeFeatures.warmOceanSpawns(mobspawninfo$builder, 10, 4);
         BiomeGenerationSettings.Builder biomegenerationsettings$builder = baseCaerulaGeneration(ConfiguredSurfaceBuilders.FULL_SAND)
-                .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.WARM_OCEAN_VEGETATION)
-                .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEAGRASS_WARM)
+                //.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.WARM_OCEAN_VEGETATION)
+                .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeaturesInit.RED_SEAGRASS_FIELDS)
                 .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEA_PICKLE);
         DefaultBiomeFeatures.addSurfaceFreezing(biomegenerationsettings$builder);
         return shallowCaerulaOceanBiome(mobspawninfo$builder, 4445678, 270131, false, biomegenerationsettings$builder);
