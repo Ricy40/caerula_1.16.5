@@ -15,6 +15,6 @@ public class FeaturesInit {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Caerula.MOD_ID);
 
-    public static final RegistryObject<RedSeaGrassFeature> RED_SEAGRASS = FEATURES.register("red_seagrass",() -> new RedSeaGrassFeature(ProbabilityConfig.CODEC));
+    public static final RegistryObject<RedSeaGrassFeature> RED_SEAGRASS_F = FEATURES.register("red_seagrass_f",() -> new RedSeaGrassFeature(ProbabilityConfig.CODEC));
 
 }
