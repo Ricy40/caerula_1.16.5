@@ -80,7 +80,7 @@
       },
       "biomes": [
         {
-          "biome": "minecraft:plains",
+          "biome": "caerula:red_seagrass_fields",
           "parameters": {
             "altitude": 0,
             "temperature": 0,

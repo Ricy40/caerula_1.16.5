@@ -10,9 +10,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.Objects;
 
 public class CaerulaBiomeGeneration {
+
     public static void generateBiomes() {
-        addBiome(BiomeInit.RED_SEAGRASS_FIELDS.get(), BiomeManager.BiomeType.WARM, 20, BiomeDictionary.Type.OCEAN);
+        //addBiome(BiomeInit.RED_SEAGRASS_FIELDS.get(), BiomeManager.BiomeType.WARM, 20, BiomeDictionary.Type.OCEAN);
     }
+
 
     private static void addBiome(Biome biome, BiomeManager.BiomeType type, int weight, BiomeDictionary.Type... types) {
         RegistryKey<Biome> key = RegistryKey.create(ForgeRegistries.Keys.BIOMES,

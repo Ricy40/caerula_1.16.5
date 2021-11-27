@@ -29,11 +29,12 @@ public class CaerulaBiomeMaker {
         return biomegenerationsettings$builder;
     }
 
-    private static Biome shallowCaerulaOceanBiome(MobSpawnInfo.Builder mobSpawninfo, int waterColor, int waterFogColor, boolean depth, BiomeGenerationSettings.Builder biomeGenSettings) {
+    private static Biome shallowCaerulaOceanBiome(MobSpawnInfo.Builder mobSpawninfo, int waterColor, int waterFogColor, float depth, BiomeGenerationSettings.Builder biomeGenSettings) {
+
         return (new Biome.Builder())
                 .precipitation(Biome.RainType.RAIN)
                 .biomeCategory(Biome.Category.OCEAN)
-                .depth(depth ? -1.8F : -1.0F).scale(0.1F)
+                .depth(depth).scale(0.1F)
                 .temperature(0.5F).downfall(0.5F)
                 .specialEffects((new BiomeAmbience.Builder())
                         .waterColor(waterColor)
@@ -54,7 +55,7 @@ public class CaerulaBiomeMaker {
                 .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeaturesInit.RED_SEAGRASS_FIELDS_F)
                 .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.SEA_PICKLE);
         DefaultBiomeFeatures.addSurfaceFreezing(biomegenerationsettings$builder);
-        return shallowCaerulaOceanBiome(mobspawninfo$builder, 4445678, 270131, false, biomegenerationsettings$builder);
+        return shallowCaerulaOceanBiome(mobspawninfo$builder, 4445678, 270131, 5.0F, biomegenerationsettings$builder);
 
     }
 
