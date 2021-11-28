@@ -46,7 +46,7 @@ public class Caerula {
         RenderTypeLookup.setRenderLayer(BlockInit.BUSH_CORAL.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlockInit.DEAD_BUSH_CORAL.get(), RenderType.cutout());
 
-        ConfiguredFeaturesInit.registerConfiguredFeatures();
+        //ConfiguredFeaturesInit.registerConfiguredFeatures();
 
         event.enqueueWork(() -> {
             CaerulaBiomeGeneration.generateBiomes();
