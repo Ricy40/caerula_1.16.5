@@ -8,6 +8,6 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 public class LulaEntityGeoRenderer extends GeoEntityRenderer<LulaEntity> {
     public LulaEntityGeoRenderer(EntityRendererManager renderManager) {
         super(renderManager, new LulaEntityModel());
-        this.shadowRadius = 0.3F;
+        this.shadowRadius = 0.2F;
     }
 }
