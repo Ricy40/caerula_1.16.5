@@ -10,6 +10,7 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.PathNavigator;
 import net.minecraft.pathfinding.SwimmerPathNavigator;
+import net.minecraft.potion.Effects;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
@@ -20,6 +21,8 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -32,7 +35,17 @@ import java.util.Random;
 
 public class LulaEntity extends WaterMobEntity implements IAnimatable {
 
+    public float xBodyRot;
     public float xBodyRotO;
+    public float zBodyRot;
+    public float zBodyRotO;
+    public float tentacleMovement;
+    public float oldTentacleMovement;
+    public float tentacleAngle;
+    public float oldTentacleAngle;
+    private float speed;
+    private float tentacleSpeed;
+    private float rotateSpeed;
     private float tx;
     private float ty;
     private float tz;
@@ -42,6 +55,7 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
     public LulaEntity(EntityType<? extends WaterMobEntity> type, World worldIn) {
         super(type, worldIn);
         this.random.setSeed((long) this.getId());
+        this.tentacleSpeed = 1.0F / (this.random.nextFloat() + 1.0F) * 0.2F;
     }
 
     @Override
@@ -51,13 +65,18 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> animationEvent) {
         if (animationEvent.isMoving()) {
-            animationEvent.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lula.swim", true));
+            animationEvent.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lula_entity.swim", true));
             return PlayState.CONTINUE;
-        } /* else if (!this.isInWater() && this.onGround && this.verticalCollision) {
+        } else if (this.getLastHurtByMob() != null) {
+            animationEvent.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lula_entity.hit", true));
+            return PlayState.CONTINUE;
+        }
+        /* else if (!this.isInWater() && this.onGround && this.verticalCollision) {
             animationEvent.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lula.flop", true));
             return PlayState.CONTINUE;
         } */
-        animationEvent.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lula.idle", true));
+
+        animationEvent.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lula_entity.idle", true));
         return PlayState.CONTINUE;
     }
 
@@ -83,8 +102,8 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
     }
 
     @Override
-    protected float getStandingEyeHeight(Pose p_213348_1_, EntitySize p_213348_2_) {
-        return p_213348_2_.height * 0.5F;
+    protected float getStandingEyeHeight(Pose p_213348_1_, EntitySize size) {
+        return size.height * 0.5F;
     }
 
     @Override
@@ -93,7 +112,7 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource p_184601_1_) {
+    protected SoundEvent getHurtSound(DamageSource source) {
         return SoundEvents.SQUID_HURT;
     }
 
@@ -110,6 +129,70 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
     @Override
     protected boolean isMovementNoisy() {
         return false;
+    }
+
+    public void aiStep() {
+        super.aiStep();
+        this.xBodyRotO = this.xBodyRot;
+        this.zBodyRotO = this.zBodyRot;
+        this.oldTentacleMovement = this.tentacleMovement;
+        this.oldTentacleAngle = this.tentacleAngle;
+        this.tentacleMovement += this.tentacleSpeed;
+        if ((double)this.tentacleMovement > (Math.PI * 2D)) {
+            if (this.level.isClientSide) {
+                this.tentacleMovement = ((float)Math.PI * 2F);
+            } else {
+                this.tentacleMovement = (float)((double)this.tentacleMovement - (Math.PI * 2D));
+                if (this.random.nextInt(10) == 0) {
+                    this.tentacleSpeed = 1.0F / (this.random.nextFloat() + 1.0F) * 0.2F;
+                }
+
+                this.level.broadcastEntityEvent(this, (byte)19);
+            }
+        }
+
+        if (this.isInWaterOrBubble()) {
+            if (this.tentacleMovement < (float)Math.PI) {
+                float f = this.tentacleMovement / (float)Math.PI;
+                this.tentacleAngle = MathHelper.sin(f * f * (float)Math.PI) * (float)Math.PI * 0.25F;
+                if ((double)f > 0.75D) {
+                    this.speed = 1.0F;
+                    this.rotateSpeed = 1.0F;
+                } else {
+                    this.rotateSpeed *= 0.8F;
+                }
+            } else {
+                this.tentacleAngle = 0.0F;
+                this.speed *= 0.9F;
+                this.rotateSpeed *= 0.99F;
+            }
+
+            if (!this.level.isClientSide) {
+                this.setDeltaMovement((double)(this.tx * this.speed), (double)(this.ty * this.speed), (double)(this.tz * this.speed));
+            }
+
+            Vector3d vector3d = this.getDeltaMovement();
+            float f1 = MathHelper.sqrt(getHorizontalDistanceSqr(vector3d));
+            this.yBodyRot += (-((float)MathHelper.atan2(vector3d.x, vector3d.z)) * (180F / (float)Math.PI) - this.yBodyRot) * 0.1F;
+            this.yRot = this.yBodyRot;
+            this.zBodyRot = (float)((double)this.zBodyRot + Math.PI * (double)this.rotateSpeed * 1.5D);
+            this.xBodyRot += (-((float)MathHelper.atan2((double)f1, vector3d.y)) * (180F / (float)Math.PI) - this.xBodyRot) * 0.1F;
+        } else {
+            this.tentacleAngle = MathHelper.abs(MathHelper.sin(this.tentacleMovement)) * (float)Math.PI * 0.25F;
+            if (!this.level.isClientSide) {
+                double d0 = this.getDeltaMovement().y;
+                if (this.hasEffect(Effects.LEVITATION)) {
+                    d0 = 0.05D * (double)(this.getEffect(Effects.LEVITATION).getAmplifier() + 1);
+                } else if (!this.isNoGravity()) {
+                    d0 -= 0.08D;
+                }
+
+                this.setDeltaMovement(0.0D, d0 * (double)0.98F, 0.0D);
+            }
+
+            this.xBodyRot = (float)((double)this.xBodyRot + (double)(-90.0F - this.xBodyRot) * 0.02D);
+        }
+
     }
 
     @Override
@@ -145,6 +228,16 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
 
     public static boolean checkLulaSpawnRules(EntityType<LulaEntity> entityIn, IWorld worldIn, SpawnReason reason, BlockPos pos, Random rand) {
         return pos.getY() > 45 && pos.getY() < worldIn.getSeaLevel();
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public void handleEntityEvent(byte bite) {
+        if (bite == 19) {
+            this.tentacleMovement = 0.0F;
+        } else {
+            super.handleEntityEvent(bite);
+        }
+
     }
     
     public void setMovementVector(float x, float y, float z) {

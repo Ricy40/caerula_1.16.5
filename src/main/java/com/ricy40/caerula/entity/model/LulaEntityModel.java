@@ -21,6 +21,6 @@ public class LulaEntityModel extends AnimatedGeoModel {
 
     @Override
     public ResourceLocation getAnimationFileLocation(Object entity) {
-        return new ResourceLocation(Caerula.MOD_ID, "animations/lula_entity.animation.json");
+        return new ResourceLocation(Caerula.MOD_ID, "animations/entity/lula_entity.animation.json");
     }
 }
