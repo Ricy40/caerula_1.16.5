@@ -1,0 +1,161 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.lula_entity",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "main_body",
+					"pivot": [0, 1, 0],
+					"rotation": [0, 180, 0],
+					"cubes": [
+						{"origin": [-1, 0, -2], "size": [2, 2, 4], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "finn",
+					"parent": "main_body",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-2, 0.5, 0], "size": [4, 1, 5], "uv": [0, 6]}
+					]
+				},
+				{
+					"name": "tentacle1",
+					"parent": "main_body",
+					"pivot": [1, 0.5, -2],
+					"cubes": [
+						{"origin": [1, 0, -4], "size": [0, 1, 2], "uv": [8, 0]}
+					]
+				},
+				{
+					"name": "secondary1",
+					"parent": "tentacle1",
+					"pivot": [1, 0.5, -4],
+					"cubes": [
+						{"origin": [1, 0, -6], "size": [0, 1, 2], "uv": [12, 0]}
+					]
+				},
+				{
+					"name": "tentacle2",
+					"parent": "main_body",
+					"pivot": [1, 1.5, -2],
+					"cubes": [
+						{"origin": [1, 1, -4], "size": [0, 1, 2], "uv": [8, 1]}
+					]
+				},
+				{
+					"name": "secondary2",
+					"parent": "tentacle2",
+					"pivot": [1, 1.5, -4],
+					"cubes": [
+						{"origin": [1, 1, -6], "size": [0, 1, 2], "uv": [12, 1]}
+					]
+				},
+				{
+					"name": "tentacle3",
+					"parent": "main_body",
+					"pivot": [-1, 0.5, -2],
+					"cubes": [
+						{"origin": [-1, 0, -4], "size": [0, 1, 2], "uv": [8, -1]}
+					]
+				},
+				{
+					"name": "secondary3",
+					"parent": "tentacle3",
+					"pivot": [-1, 0.5, -4],
+					"cubes": [
+						{"origin": [-1, 0, -6], "size": [0, 1, 2], "uv": [12, -1]}
+					]
+				},
+				{
+					"name": "tentacle4",
+					"parent": "main_body",
+					"pivot": [-1, 1.5, -2],
+					"cubes": [
+						{"origin": [-1, 1, -4], "size": [0, 1, 2], "uv": [8, -2]}
+					]
+				},
+				{
+					"name": "secondary4",
+					"parent": "tentacle4",
+					"pivot": [-1, 1.5, -4],
+					"cubes": [
+						{"origin": [-1, 1, -6], "size": [0, 1, 2], "uv": [12, -2]}
+					]
+				},
+				{
+					"name": "tentacle5",
+					"parent": "main_body",
+					"pivot": [-0.5, 0, -2],
+					"cubes": [
+						{"origin": [-1, 0, -4], "size": [1, 0, 2], "uv": [12, 6]}
+					]
+				},
+				{
+					"name": "secondary5",
+					"parent": "tentacle5",
+					"pivot": [-0.5, 0, -4],
+					"cubes": [
+						{"origin": [-1, 0, -6], "size": [1, 0, 2], "uv": [12, 9]}
+					]
+				},
+				{
+					"name": "tentacle6",
+					"parent": "main_body",
+					"pivot": [0.5, 0, -2],
+					"cubes": [
+						{"origin": [0, 0, -4], "size": [1, 0, 2], "uv": [12, 4]}
+					]
+				},
+				{
+					"name": "secondary6",
+					"parent": "tentacle6",
+					"pivot": [0.5, 0, -4],
+					"cubes": [
+						{"origin": [0, 0, -6], "size": [1, 0, 2], "uv": [10, 4]}
+					]
+				},
+				{
+					"name": "tentacle7",
+					"parent": "main_body",
+					"pivot": [0.5, 2, -2],
+					"cubes": [
+						{"origin": [0, 2, -4], "size": [1, 0, 2], "uv": [0, 9]}
+					]
+				},
+				{
+					"name": "secondary7",
+					"parent": "tentacle7",
+					"pivot": [0.5, 2, -4],
+					"cubes": [
+						{"origin": [0, 2, -6], "size": [1, 0, 2], "uv": [0, 6]}
+					]
+				},
+				{
+					"name": "tentacle8",
+					"parent": "main_body",
+					"pivot": [-0.5, 2, -2],
+					"cubes": [
+						{"origin": [-1, 2, -4], "size": [1, 0, 2], "uv": [-2, 9]}
+					]
+				},
+				{
+					"name": "secondary8",
+					"parent": "tentacle8",
+					"pivot": [-0.5, 2, -4],
+					"cubes": [
+						{"origin": [-1, 2, -6], "size": [1, 0, 2], "uv": [-2, 6]}
+					]
+				}
+			]
+		}
+	]
+}

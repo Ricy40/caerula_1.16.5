@@ -1,5 +1,7 @@
 package com.ricy40.caerula;
 
+import com.ricy40.caerula.entity.EntityTypeInit;
+import com.ricy40.caerula.entity.render.LulaEntityGeoRenderer;
 import com.ricy40.caerula.world.biome.BiomeInit;
 import com.ricy40.caerula.block.BlockInit;
 import com.ricy40.caerula.item.ItemInit;
@@ -13,7 +15,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -30,10 +34,12 @@ public class Caerula {
         GeckoLib.initialize();
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.addListener(this::setup);
+        bus.addListener(this::registerRenderers);
 
         ItemInit.ITEMS.register(bus);
         BlockInit.BLOCKS.register(bus);
         FeaturesInit.FEATURES.register(bus);
+        EntityTypeInit.ENTITY_TYPES.register(bus);
         BiomeInit.BIOMES.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -53,6 +59,12 @@ public class Caerula {
         });
 
     }
+
+    public void registerRenderers(final FMLClientSetupEvent event) {
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypeInit.LULA.get(), manager -> new LulaEntityGeoRenderer(manager));
+    }
+
 
     public static class CaerulaGroup extends ItemGroup {
 

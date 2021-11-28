@@ -1,5 +1,6 @@
 package com.ricy40.caerula.world.biome;
 
+import com.google.common.base.Suppliers;
 import com.ricy40.caerula.Caerula;
 import com.ricy40.caerula.world.biome.feature.RedSeaGrassFeature;
 import net.minecraft.world.gen.feature.Feature;
@@ -8,6 +9,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.function.Supplier;
 
 public abstract class FeaturesInit {
 
@@ -20,4 +23,5 @@ public abstract class FeaturesInit {
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
     }
+
 }
