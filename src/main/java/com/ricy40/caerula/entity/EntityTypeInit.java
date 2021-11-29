@@ -16,7 +16,7 @@ public class EntityTypeInit {
 
     public static final RegistryObject<EntityType<LulaEntity>> LULA = ENTITY_TYPES.register("lula",
             () -> EntityType.Builder.of(LulaEntity::new, EntityClassification.WATER_CREATURE)
-                    .sized(0.688f, 0.125f)
+                    .sized(0.488f, 0.125f)
                     .build(new ResourceLocation(Caerula.MOD_ID, "lula").toString()));
 
     public static void register (IEventBus bus) {
