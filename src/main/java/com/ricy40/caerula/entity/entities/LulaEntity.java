@@ -37,9 +37,9 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
 
     private Vector3d direction = new Vector3d(0.0F, 0.0F, 0.0F);
     @Nullable
-    private BlockPos coralPosition;
-    private int coralCooldown;
-    private int timeWithCoral;
+    private BlockPos coralPosition = null;
+    private int coralCooldown = 0;
+    private int timeWithCoral = 0;
 
     private AnimationFactory factory = new AnimationFactory(this);
 
@@ -240,24 +240,29 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
 
             if (this.lula.coralPosition != null && this.lula.coralCooldown == 0) {
                 this.lula.navigation.moveTo(this.lula.navigation.createPath(coralPosition, 6), 1);
-                this.lula.timeWithCoral++;
+
+            } else if (this.lula.timeWithCoral != 0) {
 
                 if (this.lula.timeWithCoral == 360) {
                     this.lula.coralCooldown = 0;
                     this.lula.coralPosition = null;
+                    this.lula.timeWithCoral = 0;
                 }
+
+                this.lula.timeWithCoral++;
 
             } else if (this.lula.coralCooldown == 360) {
 
                 BlockPos pos = new BlockPos(this.lula.getPosition(0));
 
-                for (BlockPos blockpos : BlockPos.withinManhattan(pos, 6, 6, 6)) {
+                for (BlockPos blockpos : BlockPos.withinManhattan(pos, 10, 10, 10)) {
 
                     BlockState blockstate = this.lula.level.getBlockState(blockpos);
                     Block block = blockstate.getBlock();
 
                     if (block == BlockInit.BUSH_CORAL.get()) {
                         this.lula.coralPosition = blockpos;
+                        System.out.println("Block found!");
                     }
                 }
             } else {
