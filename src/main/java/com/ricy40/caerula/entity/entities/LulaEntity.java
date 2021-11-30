@@ -1,5 +1,8 @@
 package com.ricy40.caerula.entity.entities;
 
+import com.ricy40.caerula.block.BlockInit;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -27,11 +30,16 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 public class LulaEntity extends WaterMobEntity implements IAnimatable {
 
     private Vector3d direction = new Vector3d(0.0F, 0.0F, 0.0F);
+    @Nullable
+    private BlockPos coralPosition;
+    private int coralCooldown;
+    private int timeWithCoral;
 
     private AnimationFactory factory = new AnimationFactory(this);
 
@@ -69,7 +77,8 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new LulaEntity.SwimGoal(this));
+        this.goalSelector.addGoal(0, new LulaEntity.CoralGoal(this));
+        this.goalSelector.addGoal(1, new LulaEntity.SwimGoal(this));
     }
 
     @Override
@@ -161,6 +170,7 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
         } else {
             super.travel(vector);
         }
+
     }
 
     @SuppressWarnings("Deprecation")
@@ -218,4 +228,41 @@ public class LulaEntity extends WaterMobEntity implements IAnimatable {
 
     }
 
+    private class CoralGoal extends RandomSwimmingGoal {
+        private final LulaEntity lula;
+
+        CoralGoal(LulaEntity entityIn) {
+            super(entityIn, 1.0D, 40);
+            this.lula = entityIn;
+        }
+
+        public void tick() {
+
+            if (this.lula.coralPosition != null && this.lula.coralCooldown == 0) {
+                this.lula.navigation.moveTo(this.lula.navigation.createPath(coralPosition, 6), 1);
+                this.lula.timeWithCoral++;
+
+                if (this.lula.timeWithCoral == 360) {
+                    this.lula.coralCooldown = 0;
+                    this.lula.coralPosition = null;
+                }
+
+            } else if (this.lula.coralCooldown == 360) {
+
+                BlockPos pos = new BlockPos(this.lula.getPosition(0));
+
+                for (BlockPos blockpos : BlockPos.withinManhattan(pos, 6, 6, 6)) {
+
+                    BlockState blockstate = this.lula.level.getBlockState(blockpos);
+                    Block block = blockstate.getBlock();
+
+                    if (block == BlockInit.BUSH_CORAL.get()) {
+                        this.lula.coralPosition = blockpos;
+                    }
+                }
+            } else {
+                this.lula.coralCooldown++;
+            }
+        }
+    }
 }
